@@ -37,6 +37,10 @@ export default {
       type: String,
       default: ''
     },
+    bw: {
+      type: Boolean,
+      default: false
+    },
     w: { type: Number, default: 200 },
     h: { type: Number, default: 200 }
   },
@@ -53,14 +57,16 @@ export default {
       if (this.auf.length) {
         cm.doMoves([this.auf]);
       }
-      this.stickers = util.modelToStickers(util.subarray(cm.model, 36, 44));
-      this.edges = util.modelToStickers(
+      this.stickers = util.stickerToColor(util.subarray(cm.model, 36, 44),
+                                           this.bw, this.arrows.length);
+      this.edges = util.stickerToColor(
         [].concat(
           util.subarray(cm.model, 29, 27),
           util.subarray(cm.model, 11, 9),
           util.subarray(cm.model, 20, 18),
           util.subarray(cm.model, 2, 0),
-        )
+        ),
+        this.bw, this.arrows.length
       );
     }
     drawCube(

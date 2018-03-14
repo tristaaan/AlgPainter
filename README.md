@@ -5,7 +5,7 @@ A [Vue.js](https://vuejs.org/) canvas component which draws a last layer cube di
 ## Usage
 
 ### Algorithm
-This is a simplest way to generate a diagram, just give it an algorithm! A cube model will compute the pattern for you, for some algorithms an adjust upper face (AUF) may be necessary. You can combine these with arrows too.
+This is a simplest way to generate a diagram, just give it an algorithm! A cube model will compute the pattern for you, for some algorithms an adjust upper face (AUF) may be necessary. You can combine these with arrows too. Wide moves must be in the WCA format, not lowercase. Rotations not currently supported.
 
 ```html
 <alg moves="R U R' U R U2 R'"></alg>

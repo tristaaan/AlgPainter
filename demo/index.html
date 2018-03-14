@@ -15,6 +15,7 @@
     <alg moves="F R U R' U' F'"></alg>
     <alg moves="R U R' U R U2 R'"></alg>
     <alg moves="M U M' U2 M U M'" auf="U2"></alg>
+    <alg moves="R U2 R' U' R U' R'" bw></alg>
   <br><br>
   <!-- gray stickers -->
   <alg :stickers="[0,1,0, 1,1,0, 0,0,0]" :edges="[0,0,1, 0,1,0, 1,1,0, 1,0,1]"></alg>
@@ -29,6 +30,8 @@
   <alg moves="R2 B2 R F R' B2 R F' R" :arrows="[[1,9], [9,3], [3,1]]"></alg>
   <alg :arrows="[[4,6], [6,4], [3,9], [9,3]]"></alg>
   <alg moves="R2 Uw R' U R' U' R Uw' R2 F' U F"></alg>
+  <alg moves="R' U R' Dw' R' F' R2 U' R' U R' F R F"
+       :arrows="[[1,9],[9,1],[2,6],[6,2]]" bw></alg>
   <br><br>
 </div>
 <script src="../dist/alg-painter.js"></script>
