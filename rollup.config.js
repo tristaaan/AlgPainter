@@ -7,7 +7,7 @@ export default {
     input: './src/index.js',
     output: {
         file: './dist/alg-painter.js',
-        format: 'cjs'
+        format: 'iife'
     },
 
     plugins: [
@@ -18,7 +18,5 @@ export default {
             presets: ['es2015-rollup']
         }),
         (process.env.NODE_ENV === 'production' && uglify()),
-    ],
-
-    moduleName: 'alg-painter'
+    ]
 };

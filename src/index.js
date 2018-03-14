@@ -1,4 +1,4 @@
-import algPainter from './components/alg-painter.vue';
+import algPainter from './alg-painter.vue';
 
 var AlgPainter = {
     install(Vue, options) {
@@ -6,8 +6,8 @@ var AlgPainter = {
     }
 };
 
-export default AlgPainter;
-
 if (typeof window !== 'undefined' && window.Vue) {
     window.Vue.use(AlgPainter)
+} else {
+  module.exports = AlgPainter;
 }

@@ -4,9 +4,9 @@
 
 <script>
 
-import CubeModel from '../CubeModel';
-import drawCube from '../drawCube';
-import * as util from '../util';
+import CubeModel from './CubeModel';
+import drawCube from './drawCube';
+import * as util from './util';
 
 /* Component */
 export default {
@@ -53,7 +53,7 @@ export default {
       if (this.auf.length) {
         cm.doMoves([this.auf]);
       }
-      this.stickers = util.modelToStickers(subarray(cm.model, 36, 44));
+      this.stickers = util.modelToStickers(util.subarray(cm.model, 36, 44));
       this.edges = util.modelToStickers(
         [].concat(
           util.subarray(cm.model, 29, 27),

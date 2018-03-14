@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>AlgPainter</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js'></script>
+
+</head>
+
+<body>
+
+  <div id="app">
+  <!-- default -->
+    <alg moves="F R U R' U' F'"></alg>
+    <alg moves="R U R' U R U2 R'"></alg>
+    <alg moves="M U M' U2 M U M'" auf="U2"></alg>
+  <br><br>
+  <!-- gray stickers -->
+  <alg :stickers="[0,1,0, 1,1,0, 0,0,0]" :edges="[0,0,1, 0,1,0, 1,1,0, 1,0,1]"></alg>
+  <!-- colored stickers and edges, it's easier to feed the algorithm here. -->
+  <alg :stickers="['#0f0','#ff0','red', '#ff0','#ff0','blue', 'blue','#0f0','red']"
+           :edges="['orange','red','#ff0',
+                   'green','#ff0','blue',
+                   '#ff0','#ff0','orange',
+                   '#ff0','orange','#ff0']"></alg>
+  <br><br>
+  <!-- PLL's -->
+  <alg moves="R2 B2 R F R' B2 R F' R" :arrows="[[1,9], [9,3], [3,1]]"></alg>
+  <alg :arrows="[[4,6], [6,4], [3,9], [9,3]]"></alg>
+  <alg moves="R2 Uw R' U R' U' R Uw' R2 F' U F"></alg>
+  <br><br>
+</div>
+<script src="../dist/alg-painter.js"></script>
+  <script type="text/javascript">
+    new Vue({ el: "#app" });
+  </script>
+</body>
+
+</html>
