@@ -21,28 +21,10 @@ export function stickerToColor(stickers, binary, arrows) {
     }
     return stickers;
   }
-
+  //              left      right   front   back    up      down
+  const colors = ['orange', '#f31', '#1d1', '#06f', '#ddd', 'yellow'];
   for (var i=0; i < stickers.length; i++) {
-    switch (stickers[i]) {
-      case 1:
-        stickers[i] = 'orange'; // left
-        break;
-      case 2:
-        stickers[i] = '#f31'; // right
-        break;
-      case 3:
-        stickers[i] = '#1d1'; // front
-        break;
-      case 4:
-        stickers[i] = '#06f'; // back
-        break;
-      case 5:
-        stickers[i] = '#ddd'; // top
-        break;
-      case 6:
-        stickers[i] = 'yellow'; // down
-        break;
-    }
+    stickers[i] = colors[stickers[i] - 1];
   }
   return stickers;
 }

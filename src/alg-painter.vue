@@ -1,5 +1,5 @@
 <template>
-  <canvas ref="ctx" :width="w" :height="h"></canvas>
+  <canvas ref="ctx" :width="width" :height="width"></canvas>
 </template>
 
 <script>
@@ -41,12 +41,11 @@ export default {
       type: Boolean,
       default: false
     },
-    w: { type: Number, default: 200 },
-    h: { type: Number, default: 200 }
+    width: { type: Number, default: 200 }
   },
   computed: {
     size: function() {
-      return { w: this.w, h: this.h };
+      return { w: this.width, h: this.width };
     }
   },
   mounted() {
@@ -74,7 +73,7 @@ export default {
       this.stickers,
       this.edges,
       this.arrows,
-      this.w,
+      this.width,
     );
   }
 };

@@ -1,11 +1,17 @@
 # AlgPainter
 
-A [Vue.js](https://vuejs.org/) canvas component which draws a last layer cube diagram.
+A [Vue.js](https://vuejs.org/) canvas component which draws last layer cube diagrams.
 
 ## Usage
 
+Simple parameters:
+
+- `width`: Set the width *and* height of the diagram.
+- `auf`: String, adjust upper face, appends a move to the end of the algorithm.
+- `bw`: Generate a black and white diagram.
+
 ### Algorithm
-This is a simplest way to generate a diagram, just give it an algorithm! A cube model will compute the pattern for you, for some algorithms an adjust upper face (AUF) may be necessary. You can combine these with arrows too. Wide moves must be in the WCA format, not lowercase. Rotations not currently supported.
+This is a simplest way to generate a diagram, just give it an algorithm! A cube model will compute the pattern for you, for some algorithms an adjust upper face (AUF) may be necessary. You can combine these with arrows too. Wide moves must be in the WCA format (Rw Uw' Fw2 etc), not lowercase.
 
 ```html
 <alg moves="R U R' U R U2 R'"></alg>
@@ -31,7 +37,8 @@ Give the component an array of arrows, the second number is where the arrow is p
 ```
 
 ### Custom stickers
-This is tedious and doesn't look pretty but intuitive.
+This is tedious, the code doesn't always look pretty. Stickers are ordered 1-9 row by row (see diagram in the Arrows section). Edges are ordered clockwise from the top.
+
 ```html
 <!-- gray stickers -->
 <alg :stickers="[0,1,0, 1,1,0, 0,0,0]" :edges="[0,0,1, 0,1,0, 1,1,0, 1,0,1]"></alg>
@@ -44,9 +51,7 @@ This is tedious and doesn't look pretty but intuitive.
 ```
 
 ## Todo
-(A.k.a. unsupported features at time of writing)
+(A.K.A. unsupported features at time of writing but plans to implement.)
 
 - A 3D view
 - Color customization
-- binary option given algorithm.
-- rotation moves
