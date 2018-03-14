@@ -1,0 +1,26 @@
+{
+  "name": "algpainter",
+  "version": "0.5.0",
+  "description": "",
+  "main": "dist/alg-painter.js",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "vue": "^2.5.16",
+    "vue-template-compiler": "^2.5.16"
+  },
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "rollup": "^0.56.5",
+    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-node-resolve": "^3.2.0",
+    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-plugin-vue": "^3.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "build:release": "NODE_ENV='production' rollup -c"
+  },
+  "author": "Tristan Wright",
+  "license": "MIT"
+}
