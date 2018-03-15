@@ -41,6 +41,10 @@ export default {
       type: Boolean,
       default: false
     },
+    distinctArrows: {
+      type: Boolean,
+      default: false
+    },
     width: { type: Number, default: 200 }
   },
   computed: {
@@ -74,6 +78,7 @@ export default {
       this.edges,
       this.arrows,
       this.width,
+      this.distinctArrows
     );
   }
 };

@@ -13,7 +13,6 @@ function drawStickers(ctx, stickers, width, offset, margin) {
       ctx.fillStyle = "#aaa";
     }
     ctx.fillRect(x, y, w, h);
-    // ctx.strokeRect(x, y, w, h);
   }
   return w;
 }
@@ -101,6 +100,20 @@ function arrow(ctx, fromX, fromY, toX, toY) {
   ctx.fill();
 }
 
+function arrowColor(ctx, cur, distinct) {
+  if (distinct) {
+    // edges
+    if (cur % 2 === 0) {
+      ctx.strokeStyle = ctx.fillStyle = "#F70D1A";
+    // corners
+    } else {
+      ctx.strokeStyle = ctx.fillStyle = "#0B24FA";
+    }
+  } else {
+    ctx.strokeStyle = ctx.fillStyle = "#111";
+  }
+}
+
 function stickerCenter(pos, size, offset) {
   return {
     x: offset + ((pos - 1) % 3) * size + size / 2,
@@ -108,9 +121,8 @@ function stickerCenter(pos, size, offset) {
   };
 }
 
-function drawArrows(ctx, arrows, len, offset) {
+function drawArrows(ctx, arrows, len, offset, distinct) {
   ctx.lineWidth = 2;
-  ctx.strokeStyle = ctx.fillStyle = "#111";
   ctx.lineJoin = "round";
   const size = (len - offset * 2) / 3;
   for (let i = 0; i < arrows.length; i++) {
@@ -118,6 +130,7 @@ function drawArrows(ctx, arrows, len, offset) {
     let first = -1;
     if (path.length) {
       first = path[0];
+      arrowColor(ctx, first, distinct);
     }
     let cur, next;
     for (var j = 0; j < path.length-1; j++) {
@@ -143,7 +156,7 @@ function drawArrows(ctx, arrows, len, offset) {
 // arrows : array of arrays, makes directional arrows
 //          ex: [[4,8], [8,6], [6,4]] is a U perm
 // width : size of element.
-export default function drawCube(el, stickers, edges, arrows, width) {
+export default function drawCube(el, stickers, edges, arrows, width, distinctArrows) {
   const ctx = el.getContext("2d");
   const offset = width / 18; // determines the margins in the canvas.
   const margin = 3;
@@ -154,6 +167,6 @@ export default function drawCube(el, stickers, edges, arrows, width) {
   const stickerSize = drawStickers(ctx, stickers, width, offset, margin);
   drawEdges(ctx, edges, stickerSize, width, offset);
   if (arrows.length) {
-    drawArrows(ctx, arrows, width, offset);
+    drawArrows(ctx, arrows, width, offset, distinctArrows);
   }
 }

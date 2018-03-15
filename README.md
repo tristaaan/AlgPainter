@@ -9,6 +9,7 @@ Simple parameters:
 - `width`: Set the width *and* height of the diagram.
 - `auf`: String, adjust upper face, appends a move to the end of the algorithm.
 - `bw`: Generate a black and white diagram.
+- `distinct-arrows`: Arrows which point to edge are blue and to corners red.
 
 ### Algorithm
 This is a simplest way to generate a diagram, just give it an algorithm! A cube model will compute the pattern for you, for some algorithms an adjust upper face (AUF) may be necessary. You can combine these with arrows too. Wide moves must be in the WCA format (Rw Uw' Fw2 etc), not lowercase.
