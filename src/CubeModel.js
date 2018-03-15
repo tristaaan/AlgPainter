@@ -52,7 +52,7 @@ export default function CubeModel() {
 
   this.R = function(prime) {
 
-    var c1 = [9,11,17,15];
+    var c1 = [ 9,11,17,15];
     var c2 = [44,27,53,26];
     var c3 = [38,33,47,20];
 
@@ -65,11 +65,11 @@ export default function CubeModel() {
   this.D = function(prime) {
 
     var c1 = [45,47,53,51];
-    var c2 = [24,15,33,6];
-    var c3 = [26,17,35,8];
+    var c2 = [24,15,33, 6];
+    var c3 = [26,17,35, 8];
 
     var e1 = [46,50,52,48];
-    var e2 = [25,16,34,7];
+    var e2 = [25,16,34, 7];
 
     this.arbitraryMove(c1,c2,c3,e1,e2,prime);
   }
@@ -77,11 +77,11 @@ export default function CubeModel() {
   this.B = function(prime) {
 
     var c1 = [27,29,35,33];
-    var c2 = [38,17,51,0 ];
-    var c3 = [36,11,53,6 ];
+    var c2 = [38, 0,51,17];
+    var c3 = [36, 6,53,11];
 
     var e1 = [28,32,34,30];
-    var e2 = [37,14,52,3 ];
+    var e2 = [37, 3,52,14];
 
     this.arbitraryMove(c1,c2,c3,e1,e2,prime);
   }
@@ -105,9 +105,9 @@ export default function CubeModel() {
   }
   // equator slice, same direction as D
   this.E = function(prime) {
-    var c1 = [3 ,21,12,30];
-    var c2 = [4 ,22,13,31];
-    var c3 = [5 ,23,14,32];
+    var c1 = [3,21,12,30];
+    var c2 = [4,22,13,31];
+    var c3 = [5,23,14,32];
 
     if (!prime) {
       this.rotate(c1);
