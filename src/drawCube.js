@@ -101,19 +101,38 @@ function arrow(ctx, fromX, fromY, toX, toY) {
   ctx.fill();
 }
 
+function stickerCenter(pos, size, offset) {
+  return {
+    x: offset + ((pos - 1) % 3) * size + size / 2,
+    y: offset + Math.floor((pos - 1) / 3) * size + size / 2
+  };
+}
+
 function drawArrows(ctx, arrows, len, offset) {
   ctx.lineWidth = 2;
   ctx.strokeStyle = ctx.fillStyle = "#111";
   ctx.lineJoin = "round";
   const size = (len - offset * 2) / 3;
-  const halfW = size / 2;
   for (let i = 0; i < arrows.length; i++) {
-    const cur = arrows[i];
-    const x   = offset + ((cur[0] - 1) % 3) * size + halfW;
-    const toX = offset + ((cur[1] - 1) % 3) * size + halfW;
-    const y   = offset + Math.floor((cur[0] - 1) / 3) * size + halfW;
-    const toY = offset + Math.floor((cur[1] - 1) / 3) * size + halfW;
-    arrow(ctx, x, y, toX, toY);
+    const path = arrows[i];
+    let first = -1;
+    if (path.length) {
+      first = path[0];
+    }
+    let cur, next;
+    for (var j = 0; j < path.length-1; j++) {
+      cur = path[j];
+      next = path[j+1];
+      const src = stickerCenter(cur,size,offset);
+      const to  = stickerCenter(next,size,offset);
+      arrow(ctx, src.x, src.y, to.x, to.y);
+    }
+    // complete a cycle if it wasn't provided
+    if (first !== -1 && next !== first) {
+      const src = stickerCenter(next,size,offset);
+      const to  = stickerCenter(first,size,offset);
+      arrow(ctx, src.x, src.y, to.x, to.y);
+    }
   }
 }
 

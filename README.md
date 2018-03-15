@@ -18,7 +18,7 @@ This is a simplest way to generate a diagram, just give it an algorithm! A cube 
 <alg moves="M U M' U2 M U M'" auf="U2"></alg>
 <!-- V perm -->
 <alg moves="R' U R' Dw' R' F' R2 U' R' U R' F R F" auf="U'"
-     :arrows="[[1,9],[9,1],[2,6],[6,2]]"></alg>
+     :arrows="[[1,9],[2,6]]"></alg>
 ```
 
 ### Arrows
@@ -31,9 +31,9 @@ Give the component an array of arrows, the second number is where the arrow is p
 7 8 9
 -->
 <!-- A perm -->
-<alg :arrows="[[1,9], [9,3], [3,1]]"></alg>
+<alg :arrows="[[1,9,3]]"></alg>
 <!-- T perm -->
-<alg :arrows="[[4,6], [6,4], [3,9], [9,3]]"></alg>
+<alg :arrows="[[4,6],[9,3]]"></alg>
 ```
 
 ### Custom stickers
