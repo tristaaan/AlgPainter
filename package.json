@@ -1,6 +1,6 @@
 {
   "name": "algpainter",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A vue canvas component which draws a last layer cube diagram.",
   "main": "dist/alg-painter.js",
   "dependencies": {
@@ -18,7 +18,6 @@
     "rollup-plugin-vue": "^3.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
     "build:watch": "rollup -c --watch",
     "build:release": "NODE_ENV='production' rollup -c"

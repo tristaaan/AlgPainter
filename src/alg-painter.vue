@@ -51,7 +51,7 @@ export default {
   mounted() {
     if (this.moves.length) {
       let cm = new CubeModel();
-      let mvs = this.moves.split(' ');
+      let mvs = this.moves.trim().split(' ');
       cm.doMoves(mvs);
       if (this.auf.length) {
         cm.doMoves([this.auf]);

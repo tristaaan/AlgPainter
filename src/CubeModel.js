@@ -214,15 +214,15 @@ export default function CubeModel() {
   // execute wide move, e.g. Rw -> breaks into two moves R and M'
   this.wideMove = function(m, prime) {
     this[m](prime);
-    if (m == 'L') {
+    if (m === 'L') {
       this.M(prime);
-    } else if (m == 'R') {
+    } else if (m === 'R') {
       this.M(!prime);
-    } else if (m == 'D') {
+    } else if (m === 'D') {
       this.E(prime);
-    } else if (m == 'U') {
+    } else if (m === 'U') {
       this.E(!prime);
-    } else if (m == 'F') {
+    } else if (m === 'F') {
       this.S(prime);
     } else {
       this.S(!prime);
@@ -249,7 +249,7 @@ export default function CubeModel() {
       // some wide move
       } else if (cur.length === 3) {
         // wide double
-        if (cur[2] === 2) {
+        if (cur[2] === '2') {
           this.wideMove(cur[0], false);
           this.wideMove(cur[0], false);
         // wide prime
@@ -257,8 +257,10 @@ export default function CubeModel() {
           this.wideMove(cur[0], true);
         }
       // plain *phew*
-      } else {
+      } else if (/[URFDLBMSExyz]/.test(cur)) {
         this[cur]();
+      } else {
+        throw Error(`Unrecognized move "${cur}"`);
       }
     }
   };
