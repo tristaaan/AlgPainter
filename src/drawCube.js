@@ -149,15 +149,48 @@ function drawArrows(ctx, arrows, len, offset, distinct) {
   }
 }
 
+// thanks to HTML5 rocks:
+// https://www.html5rocks.com/en/tutorials/canvas/hidpi/
+var autoScale = function(el, ctx) {
+  var devicePixelRatio = window.devicePixelRatio || 1
+  var backingStore = ctx.backingStorePixelRatio ||
+    ctx.webkitBackingStorePixelRatio ||
+    ctx.mozBackingStorePixelRatio ||
+    ctx.msBackingStorePixelRatio ||
+    ctx.oBackingStorePixelRatio ||
+    ctx.backingStorePixelRatio || 1;
+
+  var ratio = (devicePixelRatio || 1) / backingStore;
+
+  if (devicePixelRatio !== backingStore) {
+
+    var oldWidth = el.width;
+    var oldHeight = el.height;
+
+    el.width = oldWidth * ratio;
+    el.height = oldHeight * ratio;
+
+    el.style.width = oldWidth + 'px';
+    el.style.height = oldHeight + 'px';
+
+    // now scale the context to counter
+    // the fact that we've manually scaled
+    // our canvas element
+    ctx.scale(ratio, ratio);
+  }
+};
+
 // el : canvas element
 // stickers : array of 9 numbers or colors
 //            ex: [1,0], [1...6], ['#f00', 'blue', 'rgb(50,120,255)']
 // edges : array of 12 elements, similar format to stickers
-// arrows : array of arrays, makes directional arrows
-//          ex: [[4,8], [8,6], [6,4]] is a U perm
+// arrows : array of arrays, makes directional arrows,
+//          points back to the first element if not provided
+//          ex: [[4,8,6]] is a U perm
 // width : size of element.
 export default function drawCube(el, stickers, edges, arrows, width, distinctArrows) {
   const ctx = el.getContext("2d");
+  autoScale(el, ctx);
   const offset = width / 18; // determines the margins in the canvas.
   const margin = 3;
   const inset = offset + margin;

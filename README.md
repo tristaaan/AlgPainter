@@ -23,7 +23,7 @@ This is a simplest way to generate a diagram, just give it an algorithm! A cube 
 ```
 
 ### Arrows
-Give the component an array of arrows, the second number is where the arrow is pointing to.
+Give the component an array of arrows, each pair in an array represents a from to arrow. It will automatically point back to the first element if not provided at the end, that is `[1,2,1]` is equivalent to `[1,2]`.
 
 ```html
 <!--
